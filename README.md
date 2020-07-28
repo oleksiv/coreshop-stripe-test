@@ -13,7 +13,8 @@ sudo docker exec -it pars-php-fpm ./vendor/bin/pimcore-install --ignore-existing
 sudo docker exec -it pars-php-fpm php bin/console pimcore:bundle:enable CoreShopCoreBundle
 sudo docker exec -it pars-php-fpm php bin/console coreshop:install
 sudo docker exec -it pars-php-fpm php bin/console coreshop:install:demo
-
+enable stripe integration bundle in admin panel 
+see vendor/prometee/payum-stripe/docs/stripe-credentials.md
 ```
 
 - Point your virtual host to `my-project/web` 
