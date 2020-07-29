@@ -21,3 +21,9 @@ services:
     # AppBundle\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+
+    payum.stripe_checkout_gateway_factory:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments: [AppBundle\PayumStripe\StripeCheckoutSessionGatewayFactory]
+        tags:
+            - {name: payum.gateway_factory_builder, factory: stripe_checkout }
