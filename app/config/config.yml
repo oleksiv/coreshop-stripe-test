@@ -79,3 +79,11 @@ framework:
 #    session:
 #        handler_id: null
 
+core_shop_core:
+    checkout:
+        default:
+            steps:
+                stripeCheckout:
+                    step: app.coreshop.checkout.stripe_payment
+                    priority: 0
+
