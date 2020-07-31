@@ -1,3 +1,9 @@
 imports:
     - { resource: config.yml }
 
+monolog:
+    handlers:
+        main:   # <- remove this handler
+            type:   stream
+            path:   "%kernel.logs_dir%/%kernel.environment%.log" #<- logs/dev.log
+            level:  error

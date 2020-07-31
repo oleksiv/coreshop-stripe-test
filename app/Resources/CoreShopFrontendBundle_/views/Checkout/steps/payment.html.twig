@@ -1,0 +1,97 @@
+{% extends '@CoreShopFrontend/Checkout/layout.html.twig' %}
+
+{% block checkout_title %}
+    {{ 'coreshop.ui.summary'|trans }}
+{% endblock %}
+
+{% block checkout %}
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    {#    <table class="table table-bordered">#}
+    {#        <tbody>#}
+    {#        {% for pm in all_payment_methods.data %}#}
+    {#            <tr>#}
+    {#                <td>{{ pm.id }}</td>#}
+    {#                <td>XXXX XXXX XXXX {{ pm.card.last4 }}</td>#}
+    {#                <td>{{ pm.card.exp_month }}/{{ pm.card.exp_year }}</td>#}
+    {#            </tr>#}
+    {#        {% endfor %}#}
+    {#        </tbody>#}
+    {#    </table>#}
+
+    <p>Use default payment method: XXXX XXXX XXXX {{ default_payment_method.card.last4 }} <input type="radio"
+                                                                                                 name="payment_method"
+                                                                                                 id="defaultPaymentMethod"
+                                                                                                 checked
+                                                                                                 value="{{ default_payment_method.id }}">
+    </p>
+
+    <p>Add new default payment method. <input type="radio" name="payment_method" value="" id="newPaymentMethod"></p>
+
+    <div class="form-group d-none" id="card-element-group">
+        <label for="number">Card number</label>
+        <div id="card-element" class="form-control" style="height: 2.4em; padding-top: 9px;"></div>
+    </div>
+
+    <button class="btn btn-primary" id="submit">Continue</button>
+
+    <script>
+        const setupIntent = {{ setup_intent | raw }};
+        const stripe = Stripe('{{ publishable_key }}');
+        const elements = stripe.elements();
+
+        const style = {
+            base: {
+                color: '#32325d',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4'
+                },
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+            }
+        };
+
+        const card = elements.create("card");
+
+        // Handle payment submission when user clicks the pay button.
+        const button = document.getElementById("submit");
+        button.addEventListener("click", function (event) {
+            stripe
+                .confirmCardSetup(setupIntent.client_secret, {
+                    payment_method: {
+                        card: card,
+                    }
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(JSON.stringify(result.error));
+                    } else {
+                        document.getElementById('newPaymentMethod').value = result.setupIntent.payment_method;
+                        // document.getElementById('submit').click();
+                    }
+                });
+        });
+
+
+        const newPaymentMethodChecked = document.getElementById('newPaymentMethod');
+        const defaultPaymentMethodChecked = document.getElementById('defaultPaymentMethod');
+
+        newPaymentMethodChecked.addEventListener('change', (event) => {
+            card.mount("#card-element");
+            document.getElementById('card-element-group').classList.remove('d-none');
+        });
+
+        defaultPaymentMethodChecked.addEventListener('change', (event) => {
+            card.unmount();
+            document.getElementById('card-element-group').classList.add('d-none');
+        });
+    </script>
+
+
+{% endblock %}

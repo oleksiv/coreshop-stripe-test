@@ -33,4 +33,12 @@ class AppKernel extends Kernel
             $collection->addBundle(new \Pimcore\Bundle\LegacyBundle\PimcoreLegacyBundle);
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCacheDir()
+    {
+        return'/tmp/' . $this->getEnvironment();
+    }
 }

@@ -22,12 +22,34 @@ services:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
 
-    payum.stripe_checkout_gateway_factory:
-        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
-        arguments: [AppBundle\PayumStripe\StripeCheckoutSessionGatewayFactory]
-        tags:
-            - {name: payum.gateway_factory_builder, factory: stripe_checkout }
+#    payum.stripe_checkout_gateway_factory:
+#        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+#        arguments: [AppBundle\PayumStripe\StripeCheckoutSessionGatewayFactory]
+#        tags:
+#            - {name: payum.gateway_factory_builder, factory: stripe_checkout }
 
-    app.coreshop.checkout.stripe_payment:
-        class: AppBundle\CheckoutStep\StripePaymentCheckoutStep
-        arguments: []
+    #    app.coreshop.checkout.stripe_payment:
+    #        class: AppBundle\CheckoutStep\StripePaymentCheckoutStep
+    #        arguments: []
+
+    app.stripe_js_gateway_factory:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments: [AppBundle\CheckoutGateway\StripeJsCheckoutGatewayFactory]
+        tags:
+            - { name: payum.gateway_factory_builder, factory: stripe_js }
+
+    memcached.doctrine:
+        class: Memcached
+        factory: Symfony\Component\Cache\Adapter\MemcachedAdapter::createConnection
+        arguments: ['%memcached.servers%', '%memcached.config%']
+    doctrine.cache.memcached:
+        class: Doctrine\Common\Cache\MemcachedCache
+        calls:
+            - [ setMemcached, [ '@memcached.doctrine' ] ]
+
+
+    app.form.type.gateway_configuration.stripe_js:
+        class: AppBundle\Form\Type\StripeJs\StripeJsGatewayConfigurationType
+        tags:
+            - { name: coreshop.gateway_configuration_type, type: stripe_js }
+            - { name: form.type }

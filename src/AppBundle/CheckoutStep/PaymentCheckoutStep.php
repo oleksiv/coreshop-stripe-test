@@ -2,16 +2,52 @@
 
 namespace AppBundle\CheckoutStep;
 
+use AppBundle\Form\Type\Checkout\PaymentType;
 use CoreShop\Component\Order\Checkout\CheckoutStepInterface;
+use CoreShop\Component\Order\Checkout\ValidationCheckoutStepInterface;
+use CoreShop\Component\Order\Manager\CartManagerInterface;
 use CoreShop\Component\Order\Model\CartInterface;
+use CoreShop\Component\Store\Context\StoreContextInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class StripePaymentCheckoutStep implements CheckoutStepInterface
+class PaymentCheckoutStep implements CheckoutStepInterface, ValidationCheckoutStepInterface
 {
+
+    /**
+     * @var FormFactoryInterface
+     */
+    private $formFactory;
+
+    /**
+     * @var StoreContextInterface
+     */
+    private $storeContext;
+
+    /**
+     * @var CartManagerInterface
+     */
+    private $cartManager;
+
+    /**
+     * @param FormFactoryInterface  $formFactory
+     * @param StoreContextInterface $storeContext
+     * @param CartManagerInterface  $cartManager
+     */
+    public function __construct(
+        FormFactoryInterface $formFactory,
+        StoreContextInterface $storeContext,
+        CartManagerInterface $cartManager
+    ) {
+        $this->formFactory = $formFactory;
+        $this->storeContext = $storeContext;
+        $this->cartManager = $cartManager;
+    }
+
 
     public function getIdentifier()
     {
-        return 'stripeCheckout';
+        return 'payment';
     }
 
     public function doAutoForward(CartInterface $cart)
@@ -37,7 +73,6 @@ class StripePaymentCheckoutStep implements CheckoutStepInterface
         $stripe = new \Stripe\StripeClient(
             'sk_test_51GVaHMKKfgcQ3B9jmRUuSusGgfabLWYAozu4Dj8jorImcZibwRXjvLtCs2FAeONOgbo67XmkgH1lZ9WAPC2rsbHO00GmfnS56l'
         );
-
 
 
         if ($request->get('defaultPaymentMethod')) {
@@ -71,5 +106,24 @@ class StripePaymentCheckoutStep implements CheckoutStepInterface
             'setup_intent' => $setupIntent->toJSON(),
             'customer' => $customer,
         ];
+    }
+
+    /**
+     * @param Request       $request
+     * @param CartInterface $cart
+     *
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    private function createForm(Request $request, CartInterface $cart)
+    {
+        $form = $this->formFactory->createNamed('', PaymentType::class, $cart, [
+            'payment_subject' => $cart,
+        ]);
+
+        if ($request->isMethod('post')) {
+            $form = $form->handleRequest($request);
+        }
+
+        return $form;
     }
 }

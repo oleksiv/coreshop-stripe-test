@@ -73,17 +73,24 @@ pimcore:
 
 
 #### SYMFONY OVERRIDES
-framework:
-
 #### USE SESSION HANDLER CONFIGURED IN php.ini
 #    session:
 #        handler_id: null
 
-core_shop_core:
-    checkout:
-        default:
-            steps:
-                stripeCheckout:
-                    step: app.coreshop.checkout.stripe_payment
-                    priority: 0
+#core_shop_core:
+#    checkout:
+#        default:
+#            steps:
+#                payment:
+#                    step: app.coreshop.checkout.stripe_payment
+#                    priority: 0
 
+#payum:
+#    gateways:
+#        stripe_js:
+#            factory: AppBundle\CheckoutGateway\StripeJsCheckoutGatewayFactory
+
+core_shop_payment:
+    pimcore_admin:
+        js:
+            stripe_js_checkout_gateway: '/bundles/stripecheckout/pimcore/js/stripe_js_checkout.js'
