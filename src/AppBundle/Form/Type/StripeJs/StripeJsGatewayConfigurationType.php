@@ -17,7 +17,14 @@ final class StripeJsGatewayConfigurationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('config_key', TextType::class, [
+            ->add('publishable_key', TextType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'groups' => 'coreshop',
+                    ]),
+                ],
+            ])
+            ->add('secret_key', TextType::class, [
                 'constraints' => [
                     new NotBlank([
                         'groups' => 'coreshop',

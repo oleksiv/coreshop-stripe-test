@@ -9,8 +9,8 @@
   "require": {
     "php": ">=7.2",
     "coreshop/core-shop": "^2.2",
-    "coreshop/payum-stripe-checkout-bundle": "dev-master",
     "pimcore/pimcore": "~6.6.0",
+    "stripe/stripe-php": "^7.45",
     "wikimedia/composer-merge-plugin": "^1.4"
   },
   "require-dev": {
@@ -63,5 +63,7 @@
       "merge-extra-deep": false,
       "merge-scripts": false
     }
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

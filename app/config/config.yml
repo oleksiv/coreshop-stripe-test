@@ -85,12 +85,14 @@ pimcore:
 #                    step: app.coreshop.checkout.stripe_payment
 #                    priority: 0
 
-#payum:
-#    gateways:
-#        stripe_js:
-#            factory: AppBundle\CheckoutGateway\StripeJsCheckoutGatewayFactory
+payum:
+    gateways:
+        stripe_js:
+            factory: stripe_js
+            publishable_key: pk_test_Dis3xCfsENz5JTBKDj0rmWXa00NAJZRl5x
+            secret_key: sk_test_51GVaHMKKfgcQ3B9jmRUuSusGgfabLWYAozu4Dj8jorImcZibwRXjvLtCs2FAeONOgbo67XmkgH1lZ9WAPC2rsbHO00GmfnS56l
 
 core_shop_payment:
     pimcore_admin:
         js:
-            stripe_js_checkout_gateway: '/bundles/stripecheckout/pimcore/js/stripe_js_checkout.js'
+            stripe_js_checkout_gateway: '/assets/js/stripe_js_checkout.js'

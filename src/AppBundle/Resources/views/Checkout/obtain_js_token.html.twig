@@ -9,10 +9,10 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <p>Use default payment method: XXXX XXXX XXXX {{ default_payment_method.card.last4 }} <input type="radio"
-                                                                                                  name="payment_method"
-                                                                                                  id="defaultPaymentMethod"
-                                                                                                  checked
-                                                                                                  value="{{ default_payment_method.id }}">
+                                                                                                 name="payment_method"
+                                                                                                 id="defaultPaymentMethod"
+                                                                                                 checked
+                                                                                                 value="{{ default_payment_method.id }}">
     </p>
 
     <p>Add new default payment method. <input type="radio" name="payment_method" value="" id="newPaymentMethod"></p>

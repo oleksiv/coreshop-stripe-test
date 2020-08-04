@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4f38bfccb332c806bcdf5c3366b16e8",
+    "content-hash": "085862a43b1b34614792e5f7347f7174",
     "packages": [
         {
             "name": "amnuts/opcache-gui",
@@ -538,60 +538,6 @@
                 "pimcore-plugin"
             ],
             "time": "2020-07-27T12:05:36+00:00"
-        },
-        {
-            "name": "coreshop/payum-stripe-checkout-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coreshop/PayumStripeCheckoutBundle.git",
-                "reference": "aeae8130931a08713d8e3b247e816205ba10b194"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coreshop/PayumStripeCheckoutBundle/zipball/aeae8130931a08713d8e3b247e816205ba10b194",
-                "reference": "aeae8130931a08713d8e3b247e816205ba10b194",
-                "shasum": ""
-            },
-            "require": {
-                "coreshop/payum-bundle": "^2.0",
-                "php": ">=7.2",
-                "prometee/payum-stripe": "^1.1"
-            },
-            "type": "pimcore-bundle",
-            "extra": {
-                "pimcore": {
-                    "bundles": [
-                        "CoreShop\\Payum\\StripeCheckoutBundle\\StripeCheckoutBundle"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "CoreShop\\Payum\\StripeCheckoutBundle\\": "src/CoreShop/Payum/StripeCheckoutBundle"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Certimeter Group Mario Ramundo",
-                    "email": "mario.ramundo@certimetergroup.com",
-                    "homepage": "http://www.certimetergroup.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "CoreShop - Stripe Checkout Bundle",
-            "homepage": "http://www.coreshop.org",
-            "keywords": [
-                "coreshop",
-                "ecommerce",
-                "pimcore",
-                "stripe"
-            ],
-            "time": "2020-07-03T13:41:06+00:00"
         },
         {
             "name": "dachcom-digital/emailizr",
@@ -6787,54 +6733,6 @@
             "time": "2019-10-22T07:14:03+00:00"
         },
         {
-            "name": "prometee/payum-stripe",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Prometee/PayumStripe.git",
-                "reference": "eeff18b027cbd4243068af7ed13233ce8a513c33"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Prometee/PayumStripe/zipball/eeff18b027cbd4243068af7ed13233ce8a513c33",
-                "reference": "eeff18b027cbd4243068af7ed13233ce8a513c33",
-                "shasum": ""
-            },
-            "require": {
-                "payum/core": "^1.6",
-                "stripe/stripe-php": "^7"
-            },
-            "require-dev": {
-                "php-http/guzzle6-adapter": "^2.0",
-                "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^8|^9",
-                "symplify/easy-coding-standard": "^7.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Prometee\\PayumStripe\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Francis HILAIRE",
-                    "email": "Prometee@users.noreply.github.com"
-                }
-            ],
-            "description": "Payum Stripe gateways",
-            "time": "2020-04-29T10:27:14+00:00"
-        },
-        {
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
@@ -8190,16 +8088,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.44.0",
+            "version": "v7.45.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "b39ccc77358fbe0d462e6cc89ac01b7a0c896f35"
+                "reference": "21e5001f5e0d787e4755c8bfc00e578dce9ae058"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/b39ccc77358fbe0d462e6cc89ac01b7a0c896f35",
-                "reference": "b39ccc77358fbe0d462e6cc89ac01b7a0c896f35",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/21e5001f5e0d787e4755c8bfc00e578dce9ae058",
+                "reference": "21e5001f5e0d787e4755c8bfc00e578dce9ae058",
                 "shasum": ""
             },
             "require": {
@@ -8243,7 +8141,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2020-07-20T21:25:50+00:00"
+            "time": "2020-07-29T04:29:52+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8585,7 +8483,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -8772,16 +8670,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe"
+                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
-                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/5dcab1bc7146cf8c1beaa4502a3d9be344334251",
+                "reference": "5dcab1bc7146cf8c1beaa4502a3d9be344334251",
                 "shasum": ""
             },
             "require": {
@@ -8839,11 +8737,11 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-07-14T12:35:20+00:00"
+            "time": "2020-08-04T06:02:08+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
@@ -8910,7 +8808,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -8973,7 +8871,7 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
@@ -9036,7 +8934,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
@@ -11783,11 +11681,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {
-        "coreshop/payum-stripe-checkout-bundle": 20
-    },
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.2"

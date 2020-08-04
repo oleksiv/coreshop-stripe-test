@@ -1,2 +1,6 @@
 _pimcore:
     resource: "@PimcoreCoreBundle/Resources/config/routing.yml"
+
+payum_capture_do:
+    controller: AppBundle\Controller\CaptureController::doAction
+    path: '/payment/capture/{payum_token}'
