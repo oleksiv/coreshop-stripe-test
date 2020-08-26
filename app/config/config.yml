@@ -33,8 +33,8 @@ pimcore:
 #        zend_date: true
 
 #### CLASS OVERRIDES EXAMPLES
-#    models:
-#        class_overrides:
+    models:
+        class_overrides:
 #            'Pimcore\Model\DataObject\News': 'AppBundle\Model\DataObject\News'
 #            'Pimcore\Model\DataObject\News\Listing': 'AppBundle\Model\DataObject\News\Listing'
 #            'Pimcore\Model\DataObject\Folder': 'AppBundle\Model\DataObject\Folder'
@@ -42,7 +42,7 @@ pimcore:
 #            'Pimcore\Model\Asset\Image': 'AppBundle\Model\Asset\Image'
 #            'Pimcore\Model\Document\Page': 'AppBundle\Model\Document\Page'
 #            'Pimcore\Model\Document\Link': 'AppBundle\Model\Document\Link'
-#            'Pimcore\Model\Document\Listing': 'AppBundle\Model\Document\Listing'
+            'Pimcore\Model\DataObject\CoreShopCart': 'AppBundle\Model\CoreShopCartCustom'
 
 
 #### CUSTOM DOCUMENT EDITABLES
@@ -77,22 +77,21 @@ pimcore:
 #    session:
 #        handler_id: null
 
-#core_shop_core:
-#    checkout:
-#        default:
-#            steps:
-#                payment:
-#                    step: app.coreshop.checkout.stripe_payment
-#                    priority: 0
+core_shop_core:
+    checkout:
+        default:
+            steps:
+                payment:
+                    step: app.coreshop.checkout.stripe_payment
 
-payum:
-    gateways:
-        stripe_js:
-            factory: stripe_js
-            publishable_key: pk_test_Dis3xCfsENz5JTBKDj0rmWXa00NAJZRl5x
-            secret_key: sk_test_51GVaHMKKfgcQ3B9jmRUuSusGgfabLWYAozu4Dj8jorImcZibwRXjvLtCs2FAeONOgbo67XmkgH1lZ9WAPC2rsbHO00GmfnS56l
-
-core_shop_payment:
-    pimcore_admin:
-        js:
-            stripe_js_checkout_gateway: '/assets/js/stripe_js_checkout.js'
+#payum:
+#    gateways:
+#        stripe_js:
+#            factory: stripe_js
+#            publishable_key: pk_test_Dis3xCfsENz5JTBKDj0rmWXa00NAJZRl5x
+#            secret_key: sk_test_51GVaHMKKfgcQ3B9jmRUuSusGgfabLWYAozu4Dj8jorImcZibwRXjvLtCs2FAeONOgbo67XmkgH1lZ9WAPC2rsbHO00GmfnS56l
+#
+#core_shop_payment:
+#    pimcore_admin:
+#        js:
+#            stripe_js_checkout_gateway: '/assets/js/stripe_js_checkout.js'

@@ -45,11 +45,11 @@ class StripeGatewayFactory extends GatewayFactory
             $config->defaults($config['payum.default_options']);
             $config['payum.required_options'] = ['publishable_key', 'secret_key'];
 
-            $config['payum.api'] = function (ArrayObject $config) {
-                $config->validateNotEmpty($config['payum.required_options']);
-
-                return new Keys($config['publishable_key'], $config['secret_key']);
-            };
+//            $config['payum.api'] = function (ArrayObject $config) {
+//                $config->validateNotEmpty($config['payum.required_options']);
+//
+//                return new Keys($config['publishable_key'], $config['secret_key']);
+//            };
         }
     }
 }

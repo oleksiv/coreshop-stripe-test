@@ -28,22 +28,32 @@ services:
     #        tags:
     #            - {name: payum.gateway_factory_builder, factory: stripe_checkout }
 
-    #    app.coreshop.checkout.stripe_payment:
-    #        class: AppBundle\CheckoutStep\StripePaymentCheckoutStep
-    #        arguments: []
+    app.coreshop.checkout.stripe_payment:
+        class: AppBundle\CheckoutStep\PaymentCheckoutStep
+        arguments: []
 
-    app.stripe_js_gateway_factory:
-        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
-        arguments: [AppBundle\CheckoutGateway\Stripe\StripeGatewayFactory]
+#    app.stripe_js_gateway_factory:
+#        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+#        arguments: [AppBundle\CheckoutGateway\Stripe\StripeGatewayFactory]
+#        tags:
+#            - { name: payum.gateway_factory_builder, factory: stripe_js }
+
+
+#    app.form.type.gateway_configuration.stripe_js:
+#        class: AppBundle\Form\Type\StripeJs\StripeJsGatewayConfigurationType
+#        tags:
+#            - { name: coreshop.gateway_configuration_type, type: stripe_js }
+#            - { name: form.type }
+
+    AppBundle\Form\Type\Checkout\PaymentType:
+        arguments:
+            - '%coreshop.model.cart.class%'
+            - '%coreshop.form.type.checkout.payment.validation_groups%'
+            - '@coreshop.form_registry.payment.settings'
+            - '@coreshop.repository.payment_provider'
+            - '%coreshop.gateway_factories%'
         tags:
-            - { name: payum.gateway_factory_builder, factory: stripe_js }
-
-
-    app.form.type.gateway_configuration.stripe_js:
-        class: AppBundle\Form\Type\StripeJs\StripeJsGatewayConfigurationType
-        tags:
-            - { name: coreshop.gateway_configuration_type, type: stripe_js }
-            - { name: form.type }
+            - {name: form.type}
 
 #    Payum\Core\Payum:
 #        alias: payum
@@ -58,6 +68,6 @@ services:
 #        arguments: ['collection', 'collection', 'collection']
 #        calls: [setContainer, ['@service_container']]
 
-    app.capture_controller:
-        class: AppBundle\Controller\CaptureController
-        arguments: ['@payum', '@coreshop.context.cart']
+#    app.capture_controller:
+#        class: AppBundle\Controller\CaptureController
+#        arguments: ['@payum', '@coreshop.context.cart']
